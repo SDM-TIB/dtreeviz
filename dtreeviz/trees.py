@@ -483,14 +483,17 @@ def dtreeviz(tree_model,
              y_data: (pd.DataFrame, np.ndarray) = None,
              feature_names: List[str] = None,
              target_name: str = None,
+             bool_feature_names: List[str] = [],
              class_names: (Mapping[Number, str], List[str]) = None,  # required if classifier,
              tree_index: int = None,  # required in case of tree ensemble,
              precision: int = 2,
              orientation: ('TD', 'LR') = "TD",
              instance_orientation: ("TD", "LR") = "LR",
              show_root_edge_labels: bool = True,
+             show_node_edge_labels: bool = True,
              show_node_labels: bool = False,
              show_just_path: bool = False,
+             show_node_sample: bool = True,
              fancy: bool = True,
              histtype: ('bar', 'barstacked', 'strip') = 'barstacked',
              highlight_path: List[int] = [],
@@ -810,10 +813,18 @@ def dtreeviz(tree_model,
                                colors=colors)
 
         nname = node_name(node)
+        if show_node_sample:
+            node_featurenames_sample = 'Sample: '+ str(node.nsamples())+ '<br/>'+ node.feature_name()
         if not node.is_categorical_split():
-            gr_node = split_node(node.feature_name(), nname, split=myround(node.split(), precision))
+            if show_node_sample:
+                gr_node = split_node(node_featurenames_sample, nname, split=myround(node.split(), precision))
+            else:
+                gr_node = split_node(node.feature_name(), nname, split=myround(node.split(), precision))
         else:
-            gr_node = split_node(node.feature_name(), nname, split=node.split()[0])
+            if show_node_sample:
+                gr_node = split_node(node_featurenames_sample, nname, split=node.split()[0])
+            else:
+                gr_node = split_node(node.feature_name(), nname, split=node.split()[0])
         internal.append(gr_node)
 
     leaves = []
@@ -839,7 +850,7 @@ def dtreeviz(tree_model,
 
     if show_just_path:
         show_root_edge_labels = False
-    show_edge_labels = False
+    show_edge_labels = show_node_edge_labels
     all_llabel = '&lt;' if show_edge_labels else ''
     all_rlabel = '&ge;' if show_edge_labels else ''
     root_llabel = '&lt;' if show_root_edge_labels else ''
@@ -859,11 +870,19 @@ def dtreeviz(tree_model,
             right_node_name = node_name(node.right)
 
         if node == shadow_tree.root:
-            llabel = root_llabel
-            rlabel = root_rlabel
+            if node.feature_name() in bool_feature_names:
+                llabel = 'No'
+                rlabel = 'Yes'
+            else:
+                llabel = root_llabel
+                rlabel = root_rlabel
         else:
-            llabel = all_llabel
-            rlabel = all_rlabel
+            if node.feature_name() in bool_feature_names:
+                llabel = 'No'
+                rlabel = 'Yes'
+            else:
+                llabel = all_llabel
+                rlabel = all_rlabel
 
         lcolor = rcolor = colors['arrow']
         lpw = rpw = "0.3"
