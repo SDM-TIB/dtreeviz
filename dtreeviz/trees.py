@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 from sys import platform as PLATFORM
 from typing import List
+from math import ceil
 
 import numpy as np
 import pandas as pd
@@ -483,7 +484,9 @@ def dtreeviz(tree_model,
              y_data: (pd.DataFrame, np.ndarray) = None,
              feature_names: List[str] = None,
              target_name: str = None,
-             bool_feature_names: List[str] = [],
+             bool_feature_names_true: List[str] = [],
+             bool_feature_names_false: List[str] = [],
+             feature_names_for_split: List[str] = [],
              class_names: (Mapping[Number, str], List[str]) = None,  # required if classifier,
              tree_index: int = None,  # required in case of tree ensemble,
              precision: int = 2,
@@ -566,7 +569,8 @@ def dtreeviz(tree_model,
     def node_name(node: ShadowDecTreeNode) -> str:
         return f"node{node.id}"
 
-    def split_node(name, node_name, split):
+    def split_node(name, node_name, split, org_name=None):
+        #print (type(name), type(split), type(org_name))
         if fancy:
             labelgraph = node_label(node) if show_node_labels else ''
             html = f"""<table border="0">
@@ -576,7 +580,20 @@ def dtreeviz(tree_model,
             </tr>
             </table>"""
         else:
-            html = f"""<font face="Helvetica" color="#444443" point-size="12">{name}@{split}</font>"""
+            if org_name in feature_names_for_split:
+                split = str(ceil(float(split)))
+            
+            if org_name in bool_feature_names_true:
+                name = name.replace('_1.0', '')
+                #split = ''
+            elif org_name in bool_feature_names_false:
+                name = name.replace('_0.0', '')
+                #split= ''
+            
+            # print (name, split)
+              
+            # html = f"""<font face="Helvetica" color="#444443" point-size="12">{name}@{split}</font>"""
+            html = f"""<font face="Helvetica" color="#444443" point-size="12">{name}</font>"""
         if node.id in highlight_path:
             gr_node = f'{node_name} [margin="0" shape=box penwidth=".5" color="{colors["highlight"]}" style="dashed" label=<{html}>]'
         else:
@@ -815,16 +832,19 @@ def dtreeviz(tree_model,
         nname = node_name(node)
         if show_node_sample:
             node_featurenames_sample = 'Sample: '+ str(node.nsamples())+ '<br/>'+ node.feature_name()
+        
+        
+        
         if not node.is_categorical_split():
             if show_node_sample:
-                gr_node = split_node(node_featurenames_sample, nname, split=myround(node.split(), precision))
+                gr_node = split_node(node_featurenames_sample, nname, split=myround(node.split(), precision),  org_name=node.feature_name())
             else:
-                gr_node = split_node(node.feature_name(), nname, split=myround(node.split(), precision))
+                gr_node = split_node(node.feature_name(), nname, split=myround(node.split(), precision),  org_name=node.feature_name())
         else:
             if show_node_sample:
-                gr_node = split_node(node_featurenames_sample, nname, split=node.split()[0])
+                gr_node = split_node(node_featurenames_sample, nname, split=node.split()[0],  org_name=node.feature_name())
             else:
-                gr_node = split_node(node.feature_name(), nname, split=node.split()[0])
+                gr_node = split_node(node.feature_name(), nname, split=node.split()[0],  org_name=node.feature_name())
         internal.append(gr_node)
 
     leaves = []
@@ -868,21 +888,31 @@ def dtreeviz(tree_model,
             right_node_name = 'leaf%d' % node.right.id
         else:
             right_node_name = node_name(node.right)
-
+        
         if node == shadow_tree.root:
-            if node.feature_name() in bool_feature_names:
+            if node.feature_name() in bool_feature_names_true:
                 llabel = 'No'
                 rlabel = 'Yes'
+            
+            elif node.feature_name() in bool_feature_names_false:
+                llabel = 'Yes'
+                rlabel = 'No'
+             
             else:
-                llabel = root_llabel
-                rlabel = root_rlabel
+                llabel = root_llabel+str(ceil(node.split()))
+                rlabel = root_rlabel+str(ceil(node.split()))
         else:
-            if node.feature_name() in bool_feature_names:
+            if node.feature_name() in bool_feature_names_true:
                 llabel = 'No'
                 rlabel = 'Yes'
+                
+            elif node.feature_name() in bool_feature_names_false:
+                llabel = 'Yes'
+                rlabel = 'No'
+             
             else:
-                llabel = all_llabel
-                rlabel = all_rlabel
+                llabel = all_llabel+str(ceil(node.split()))
+                rlabel = all_rlabel+str(ceil(node.split()))
 
         lcolor = rcolor = colors['arrow']
         lpw = rpw = "0.3"

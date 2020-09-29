@@ -1,0 +1,74 @@
+[I 14:30:41.638 LabApp] JupyterLab extension loaded from /home/tibvyasa/miniconda3/envs/dtree/lib/python3.8/site-packages/jupyterlab
+[I 14:30:41.638 LabApp] JupyterLab application directory is /home/tibvyasa/miniconda3/envs/dtree/share/jupyter/lab
+[I 14:30:41.640 LabApp] Serving notebooks from local directory: /home/tibvyasa/projects/proj_os/repos/dtreeviz
+[I 14:30:41.640 LabApp] Jupyter Notebook 6.1.4 is running at:
+[I 14:30:41.641 LabApp] http://localhost:8899/?token=ed09ef14629142a2f9bb09c0716f05f848b2d84aeb75e069
+[I 14:30:41.641 LabApp]  or http://127.0.0.1:8899/?token=ed09ef14629142a2f9bb09c0716f05f848b2d84aeb75e069
+[I 14:30:41.641 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 14:30:41.644 LabApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/tibvyasa/.local/share/jupyter/runtime/nbserver-233-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8899/?token=ed09ef14629142a2f9bb09c0716f05f848b2d84aeb75e069
+     or http://127.0.0.1:8899/?token=ed09ef14629142a2f9bb09c0716f05f848b2d84aeb75e069
+[I 14:30:53.617 LabApp] 302 GET /?token=ed09ef14629142a2f9bb09c0716f05f848b2d84aeb75e069 (127.0.0.1) 1.61ms
+[W 14:31:02.227 LabApp] Could not determine jupyterlab build status without nodejs
+[W 14:31:09.345 LabApp] 404 GET /api/contents/new_prediction_models/utils.py?content=0&1600864263246 (127.0.0.1): No such file or directory: new_prediction_models/utils.py
+[W 14:31:09.346 LabApp] No such file or directory: new_prediction_models/utils.py
+[W 14:31:09.348 LabApp] 404 GET /api/contents/new_prediction_models/utils.py?content=0&1600864263246 (127.0.0.1) 38.45ms referer=http://localhost:8899/lab
+[I 15:04:04.608 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:06.612 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:07.903 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:09.999 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:12.651 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:13.858 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:04:15.137 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:05:54.379 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:05:58.863 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:04.790 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:08.996 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:10.256 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:11.543 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:13.467 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:15.366 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:16.779 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:09:18.391 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:12:00.951 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:12:02.846 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:12:11.999 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:12:14.697 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:12:16.667 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:21:52.400 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:21:54.434 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:21:55.697 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:28.378 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:33.680 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:36.780 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:39.186 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:44.218 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:46.317 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:25:47.806 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:28:39.759 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:28:42.331 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:28:43.763 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:16.619 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:19.245 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:27.504 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:31.356 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:36.904 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:41.412 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:34:44.635 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:38:07.119 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:38:10.744 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:26.409 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:30.672 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:33.580 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:36.688 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:50.391 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:54.168 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:39:56.627 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:41:59.987 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:42:04.684 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:42:07.376 LabApp] Saving file at /dtreeviz/trees.py
+[I 15:42:08.772 LabApp] Saving file at /dtreeviz/trees.py
