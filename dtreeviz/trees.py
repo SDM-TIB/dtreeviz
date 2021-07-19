@@ -586,7 +586,7 @@ def dtreeviz(tree_model,
             if org_name in bool_feature_names_true:
                 name = name.replace('_1.0', '')
                 #split = ''
-            elif org_name in bool_feature_names_false:
+            if org_name in bool_feature_names_false:
                 name = name.replace('_0.0', '')
                 #split= ''
             
